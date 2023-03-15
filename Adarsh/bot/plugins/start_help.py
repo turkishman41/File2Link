@@ -81,7 +81,7 @@ async def start(b, m):
         reply_markup=buttonz)
 
 
-@StreamBot.on_message((filters.command("help") | filters.regex('help📚')) & filters.private )
+@StreamBot.on_message((filters.command("help") | filters.regex('📚 Yardım')) & filters.private )
 async def help_handler(bot, message):
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id)
