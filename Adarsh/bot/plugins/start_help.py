@@ -55,7 +55,7 @@ async def start(b, m):
         except UserNotParticipant:
              await StreamBot.send_photo(
                 chat_id=m.chat.id,
-                photo="https://telegra.ph/file/9d94fc0af81234943e1a9.jpg",
+                photo="https://telegra.ph/file/d08afd7aa60eccadaef92.jpg",
                 caption="<i> Botu Kullana Bilmeniz İçin Kanala abone olmanız Gerekir🔐</i>",
                 reply_markup=InlineKeyboardMarkup(
                     [
@@ -76,7 +76,7 @@ async def start(b, m):
             return
     await StreamBot.send_photo(
         chat_id=m.chat.id,
-        photo ="https://telegra.ph/file/ca10e459bc6f48a4ad0f7.jpg",
+        photo ="https://telegra.ph/file/d08afd7aa60eccadaef92.jpg",
         caption =f'Esenlikler , Sayğılar {m.from_user.mention(style="md")}!,\n Bu Dosya / Videolarınızdan Bağlantı  Oluşturan Botdur . \nBota herhangi bir dosya/Video gönderin, Direk İndirme  ve Akış Bağlantılarını alın. ;)',
         reply_markup=buttonz)
 
@@ -103,7 +103,7 @@ async def help_handler(bot, message):
         except UserNotParticipant:
             await StreamBot.send_photo(
                 chat_id=message.chat.id,
-                photo="https://telegra.ph/file/ca10e459bc6f48a4ad0f7.jpg",
+                photo="https://telegra.ph/file/d08afd7aa60eccadaef92.jpg",
                 Caption="** Botu Kullana Bilmeziniz için Kanala Abone olmanız Gerekir. ** __ Katıl ve kullan!__",
                 reply_markup=InlineKeyboardMarkup(
                     [
