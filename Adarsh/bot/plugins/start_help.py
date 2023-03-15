@@ -40,7 +40,7 @@ async def start(b, m):
         await db.add_user(m.from_user.id)
         await b.send_message(
             Var.BIN_CHANNEL,
-            f"**Yeni Üye:** \n\n____ [{m.from_user.first_name}](tg://user?id={m.from_user.id}) __Sᴛᴀʀᴛᴇᴅ Yᴏᴜʀ Bᴏᴛ !!__"
+            f"**Yeni Üye:** \n\n____ [{m.from_user.first_name}](tg://user?id={m.from_user.id}) __Botu Başlatdı !!__"
         )
     if Var.UPDATES_CHANNEL != "None":
         try:
@@ -77,7 +77,7 @@ async def start(b, m):
     await StreamBot.send_photo(
         chat_id=m.chat.id,
         photo ="https://telegra.ph/file/ca10e459bc6f48a4ad0f7.jpg",
-        caption =f'Hi {m.from_user.mention(style="md")}!,\nI am Telegram File to Link Generator Bot with Channel support.\nSend me any file and get a direct download link and streamable link.!',
+        caption =f'Esenlikler , Sayğılar {m.from_user.mention(style="md")}!,\n Bu Dosya / Videolarınızdan Bağlantı  Oluşturan Botdur . \nBota herhangi bir dosya/Video gönderin, Direk İndirme  ve yayınlanabilin Bağlantılarını alın. ;)',
         reply_markup=buttonz)
 
 
@@ -95,7 +95,7 @@ async def help_handler(bot, message):
             if user.status == "kicked":
                 await bot.send_message(
                     chat_id=message.chat.id,
-                    text="<i>Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ FROM USING ᴍᴇ. Cᴏɴᴛᴀᴄᴛ ᴛʜᴇ Dᴇᴠᴇʟᴏᴘᴇʀ</i>",
+                    text="<i> Siz Kullanma Hakkınız Alındı. Cᴏɴᴛᴀᴄᴛ</i>",
                     
                     disable_web_page_preview=True
                 )
