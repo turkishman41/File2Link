@@ -20,27 +20,27 @@ pass_dict = {}
 pass_db = Database(Var.DATABASE_URL, "ag_passwords")
 
 
-@StreamBot.on_message((filters.regex("login🔑") | filters.command("login")) , group=4)
+@StreamBot.on_message((filters.regex("🔑 Giriş") | filters.command("login")) , group=4)
 async def login_handler(c: Client, m: Message):
     try:
         try:
-            ag = await m.reply_text("Now send me password.\n\n If You don't know check the MY_PASS Variable in heroku \n\n(You can use /cancel command to cancel the process)")
+            ag = await m.reply_text("İmdi Şifreyi Gönderin.\n\n/cancel")
             _text = await c.listen(m.chat.id, filters=filters.text, timeout=90)
             if _text.text:
                 textp = _text.text
                 if textp == "/cancel":
-                   await ag.edit("Process Cancelled Successfully")
+                   await ag.edit("İşlem Başarıyla İptal Edildi")
                    return
             else:
                 return
         except TimeoutError:
-            await ag.edit("I can't wait more for password, try again")
+            await ag.edit("Şifre için daha fazla bekleyemem, tekrar dene")
             return
         if textp == MY_PASS:
             await pass_db.add_user_pass(m.chat.id, textp)
-            ag_text = "yeah! you entered the password correctly"
+            ag_text = "Evet! şifre doğru ✅"
         else:
-            ag_text = "Wrong password, try again"
+            ag_text = "Yanlış şifre❌, tekrar deneyin"
         await ag.edit(ag_text)
     except Exception as e:
         print(e)
@@ -75,7 +75,7 @@ async def private_receive_handler(c: Client, m: Message):
         except UserNotParticipant:
             await c.send_message(
                 chat_id=m.chat.id,
-                text="""<i>𝙹𝙾𝙸𝙽 UPDATES CHANNEL 𝚃𝙾 𝚄𝚂𝙴 𝙼𝙴 🔐</i>""",
+                text="""<i>Botu Kullana Bilmeniz için Kanalımıza Abone olmaniz Gerekir 🔐</i>""",
                 reply_markup=InlineKeyboardMarkup(
                     [
                         [
