@@ -99,15 +99,15 @@ async def private_receive_handler(c: Client, m: Message):
         stream_link = f"{Var.URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
         online_link = f"{Var.URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
        
-        msg_text ="""<i><u> Başlantı Uluşturuldu !</u></i>\n\n<b>📂 Dosya Adı :</b> <i>{}</i>\n\n<b>📦 Boyut :</b> <i>{}</i>\n\n<b>📥 İndir :</b> <i>{}</i>\n\n<b> 🖥 İzle :</b> <i>{}</i>\n\n<b>🚸 Not : LINK WON'T EXPIRE TILL I DELETE</b>"""
+        msg_text ="""<i><u> Başlantı Uluşturuldu !</u></i>\n\n<b>📂 Dosya Adı :</b> <i>{}</i>\n\n<b>📦 Boyut :</b> <i>{}</i>\n\n<b>📥 İndir :</b> <i>{}</i>\n\n<b> 🖥 İzle :</b> <i>{}</i>\n\n<b>🚸 Not : Bağlantının Süresi dolmayacak biz silmiyenedek</b>"""
 
-        await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True,  quote=True)
+        await log_msg.reply_text(text=f"**İsteyen :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True,  quote=True)
         await m.reply_text(
             text=msg_text.format(get_name(log_msg), humanbytes(get_media_file_size(m)), online_link, stream_link),
             quote=True,
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("STREAM 🖥", url=stream_link), #Stream Link
-                                                InlineKeyboardButton('DOWNLOAD 📥', url=online_link)]]) #Download Link
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Akış 🖥", url=stream_link), #Stream Link
+                                                InlineKeyboardButton('İndir 📥', url=online_link)]]) #Download Link
         )
     except FloodWait as e:
         print(f"Sleeping for {str(e.x)}s")
@@ -120,10 +120,10 @@ async def channel_receive_handler(bot, broadcast):
     if MY_PASS:
         check_pass = await pass_db.get_user_pass(broadcast.chat.id)
         if check_pass == None:
-            await broadcast.reply_text("Login first using /login cmd \n don\'t know the pass? request it from developer!")
+            await broadcast.reply_text("Giriş Yapa Bilmeniz için /login cmd kullanin \n Eğer Şifreyi Bilmiyorsun? Qurucudan İste")
             return
         if check_pass != MY_PASS:
-            await broadcast.reply_text("Wrong password, login again")
+            await broadcast.reply_text("Yanlış şifre❌, Yine deneyin")
             await pass_db.delete_user(broadcast.chat.id)
             
             return
@@ -144,8 +144,8 @@ async def channel_receive_handler(bot, broadcast):
             message_id=broadcast.id,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("🖥STREAM ", url=stream_link),
-                     InlineKeyboardButton('Dᴏᴡɴʟᴏᴀᴅ📥', url=online_link)] 
+                    [InlineKeyboardButton("🖥 Akış ", url=stream_link),
+                     InlineKeyboardButton('İndir 📥', url=online_link)] 
                 ]
             )
         )
