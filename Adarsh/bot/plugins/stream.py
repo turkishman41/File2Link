@@ -40,7 +40,7 @@ async def login_handler(c: Client, m: Message):
             await pass_db.add_user_pass(m.chat.id, textp)
             ag_text = "Evet! şifre doğru ✅"
         else:
-            ag_text = "Yanlış şifre❌, tekrar deneyin"
+            ag_text = "Yanlış şifre❌, Yine deneyin"
         await ag.edit(ag_text)
     except Exception as e:
         print(e)
@@ -50,7 +50,7 @@ async def private_receive_handler(c: Client, m: Message):
     if MY_PASS:
         check_pass = await pass_db.get_user_pass(m.chat.id)
         if check_pass== None:
-            await m.reply_text("Login first using /login cmd \n don\'t know the pass? request it from the Developer")
+            await m.reply_text("Giriş Yapa Bilmeniz için /login cmd kullanin \n Eğer Şifreyi Bilmiyorsun? Qurucudan İste ")
             return
         if check_pass != MY_PASS:
             await pass_db.delete_user(m.chat.id)
@@ -59,7 +59,7 @@ async def private_receive_handler(c: Client, m: Message):
         await db.add_user(m.from_user.id)
         await c.send_message(
             Var.BIN_CHANNEL,
-            f"New User Joined! : \n\n Name : [{m.from_user.first_name}](tg://user?id={m.from_user.id}) Started Your Bot!!"
+            f"Yeni Üye! : \n\n Name : [{m.from_user.first_name}](tg://user?id={m.from_user.id}) Botu Başlatdı!!"
         )
     if Var.UPDATES_CHANNEL != "None":
         try:
@@ -67,7 +67,7 @@ async def private_receive_handler(c: Client, m: Message):
             if user.status == "kicked":
                 await c.send_message(
                     chat_id=m.chat.id,
-                    text="You are banned!\n\n  **Cᴏɴᴛᴀᴄᴛ Dᴇᴠᴇʟᴏᴘᴇʀ [Adarsh Goel](https://github.com/adarsh-goel) ʜᴇ Wɪʟʟ Hᴇʟᴘ Yᴏᴜ**",
+                    text="Engelendiniz!\n\n  **İletişime Geçin [Qurucu](https://t.me/ilqar_turksoy)**",
                     
                     disable_web_page_preview=True
                 )
@@ -90,7 +90,7 @@ async def private_receive_handler(c: Client, m: Message):
             await m.reply_text(e)
             await c.send_message(
                 chat_id=m.chat.id,
-                text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍʏ ʙᴏss** [Adarsh Goel](https://github.com/adarsh-goel)",
+                text="**Bir şeyler düz değil , bize Bildirin** [Qurucu](https://t.me/ilqar_turksoy)",
                 
                 disable_web_page_preview=True)
             return
@@ -99,7 +99,7 @@ async def private_receive_handler(c: Client, m: Message):
         stream_link = f"{Var.URL}watch/{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
         online_link = f"{Var.URL}{str(log_msg.id)}/{quote_plus(get_name(log_msg))}?hash={get_hash(log_msg)}"
        
-        msg_text ="""<i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>\n\n<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>\n\n<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>\n\n<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>\n\n<b> 🖥WATCH  :</b> <i>{}</i>\n\n<b>🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE TILL I DELETE</b>"""
+        msg_text ="""<i><u> Başlantı Uluşturuldu !</u></i>\n\n<b>📂 Dosya Adı :</b> <i>{}</i>\n\n<b>📦 Boyut :</b> <i>{}</i>\n\n<b>📥 İndir :</b> <i>{}</i>\n\n<b> 🖥 İzle :</b> <i>{}</i>\n\n<b>🚸 Not : LINK WON'T EXPIRE TILL I DELETE</b>"""
 
         await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n**Stream ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True,  quote=True)
         await m.reply_text(
