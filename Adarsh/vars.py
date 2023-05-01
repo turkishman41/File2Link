@@ -12,7 +12,6 @@ class Var(object):
     API_ID = int(getenv('API_ID', '1317481'))
     API_HASH = str(getenv('API_HASH', 'e5f7a25123dca9d734516cde8ae4c374'))
     BOT_TOKEN = str(getenv('BOT_TOKEN', '5766660974:AAEAvieeIn5Uhf2xCP8SJ9VE7-8w60SIKQM'))
-    name = str(getenv('name', 'filetolinkbot'))
     SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
     WORKERS = int(getenv('WORKERS', '4'))
     BIN_CHANNEL = int(getenv('BIN_CHANNEL', '-1001575556771'))
